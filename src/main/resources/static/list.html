@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>列表</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h3>以下为上传历史记录<a href="/info" class="btn btn-primary">我要上传</a></h3>
+    <div style="height: 20px;"></div>
+    <table class="table table-bordered">
+    	<tr>
+    		<td>序号</td>
+    		<td>文件名称</td>
+    		<td>二维码</td>
+    	</tr>
+    	<tr th:each="attachment,attachmentStat : ${attachmentList}">
+    		<td><span th:text="${attachmentStat.count}"/></td>
+    		<td><span th:text="${attachment.fileName}"/></td>
+    		<td><img th:src="${attachment.domain} + '/' + ${attachment.filePath}" width=40px height=40px onmouseover="this.style.cursor='pointer';this.style.cursor='hand'" 
+		onmouseout="this.style.cursor='default'" onclick="javascript:showimage(this.src);"/></td>
+    	</tr>
+    </table>
+    <!--放大图的imgModal-->
+  <div class="modal fade bs-example-modal-lg text-center" id="imgModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" style="display: inline-block; width: auto;">
+      <div class="modal-content">
+        <img id="imgInModalID" class="carousel-inner img-responsive img-rounded" onclick="closeImageViewer()"
+          onmouseover="this.style.cursor='pointer';this.style.cursor='hand'" onmouseout="this.style.cursor='default'" />
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"  crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  //显示大图    
+  function showimage(source) {
+    $("#imgModal").find("#imgInModalID").attr("src", source);
+    $("#imgModal").modal();
+  }
+  //关闭
+  function closeImageViewer() {
+    $("#imgModal").modal('hide');
+  }
+</script>
+</body>
+</html>

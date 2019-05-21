@@ -1,0 +1,48 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: vr
+  thymeleaf:
+        prefix: classpath:/static/
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
+      name: test
+      url: jdbc:mysql://localhost:3306/vr?useUnicode=true&characterEncoding=UTF8&allowMultiQueries=true
+      username: xxx
+      password: xxx
+      # 使用druid数据源
+      filters: stat
+      max-active: 20
+      initialSize: 1
+      max-wait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20    
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate: 
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+logging:
+  level:
+   com.tongu.vr: DEBUG
+   
+vr:
+  oss:
+    bucket: tonggu
+    endpoint: oss-cn-shanghai.aliyuncs.com
+    accessKeyId: xxxx
+    accessKeySecret: xxxx
+    max-size: 20
+    domain: https://tonggu.oss-cn-shanghai.aliyuncs.com
+    tmp-path: /tmp
