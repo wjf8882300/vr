@@ -15,9 +15,9 @@ CREATE TABLE vr_t_attachment
    attachment_size      INT COMMENT '附件大小',
    attachment_sign      VARCHAR(500) NOT NULL COMMENT '文件签名',
    qr_code_path         VARCHAR(500) NULL COMMENT '二维码路径',
-   create_date          DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+   create_date          DATETIME NOT NULL COMMENT '创建时间',
    create_user          BIGINT COMMENT '创建人',
-   last_update_date     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+   last_update_date     DATETIME NOT NULL COMMENT '更新时间',
    last_update_user     BIGINT COMMENT '更新人',
    is_delete            CHAR(1) NOT NULL DEFAULT '0' COMMENT '是否删除
             0-未删除/1-已删除',
